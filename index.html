@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Crimson+Text:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rose: #ff4444;
+            --cream: #fff0f0;
+            --lavender: #ff6b6b;
+            --peach: #ff8585;
+            --deep-rose: #cc0000;
+            --text-dark: #4a4a4a;
+            --bright-red: #ff0000;
+            --dark-red: #8b0000;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--cream);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #cc0000 0%, #ff4444 50%, #ff6b6b 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            max-width: 1400px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* Slideshow Container */
+        .slideshow-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            flex-shrink: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a0000;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(204,0,0,0.1) 0%, rgba(255,68,68,0.05) 50%, rgba(255,107,107,0.1) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-content {
+            text-align: left;
+            z-index: 10;
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5), 0 0 40px rgba(204,0,0,0.5);
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 1.5s forwards 0.5s;
+        }
+
+        .hero-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: white;
+            line-height: 1.8;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.6);
+            opacity: 0;
+            animation: fadeInUp 1.5s forwards 1.5s;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s forwards 3s, bounce 2s infinite 3s;
+            z-index: 10;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 15px); }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            font-size: clamp(15px, 2vw, 30px);
+            opacity: 0;
+            animation: floatUp 8s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            min-height: 100vh;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            color: var(--deep-rose);
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: linear-gradient(to bottom, var(--cream), #ffe0e0);
+        }
+
+        .timeline {
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--bright-red), var(--deep-rose));
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            margin-bottom: 80px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateX(50px);
+        }
+
+        .timeline-item:nth-child(even).visible {
+            transform: translateX(0);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--deep-rose);
+            border: 5px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--rose);
+            z-index: 10;
+        }
+
+        .timeline-date {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--deep-rose);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .timeline-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: white;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #cc0000, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .gallery-placeholder {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 30px 20px 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 3;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Love Letter Section */
+        .letter-section {
+            background: linear-gradient(135deg, #ffe0e0, var(--cream));
+        }
+
+        .love-letter {
+            max-width: 800px;
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+            background-image: 
+                linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+                linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+            background-size: 100% 30px;
+            background-position: 0 10px;
+        }
+
+        .love-letter.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .letter-header {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--deep-rose);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .letter-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            line-height: 2.2;
+            color: var(--text-dark);
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .letter-content p {
+            margin-bottom: 25px;
+        }
+
+        .letter-signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--deep-rose);
+            text-align: right;
+            margin-top: 40px;
+        }
+
+        /* Proposal Section */
+        .proposal-section {
+            background: linear-gradient(135deg, #cc0000 0%, #ff4444 50%, #ff6b6b 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Fun proposal animations */
+        .bouncing-heart {
+            position: absolute;
+            font-size: 3rem;
+            animation: heartBounce 2s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes heartBounce {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.2);
+            }
+        }
+
+        .rotating-ring {
+            position: absolute;
+            font-size: 4rem;
+            animation: ringRotate 4s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes ringRotate {
+            0% {
+                transform: rotate(0deg) translateX(100px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(100px) rotate(-360deg);
+            }
+        }
+
+        .floating-love {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatLove 6s ease-in-out infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes floatLove {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -40px) rotate(10deg);
+            }
+            50% {
+                transform: translate(0, -80px) rotate(0deg);
+            }
+            75% {
+                transform: translate(-30px, -40px) rotate(-10deg);
+            }
+        }
+
+        .proposal-content {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 1.2s ease;
+        }
+
+        .proposal-content.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .proposal-lead {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: white;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .proposal-question {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: white;
+            text-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .proposal-subtext {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: white;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            font-style: italic;
+            opacity: 0;
+            animation: fadeIn 1s forwards 1s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .proposal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .proposal-btn {
+            padding: 20px 70px;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            min-width: 300px;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 25px rgba(255,107,107,0.5);
+            }
+            50% {
+                box-shadow: 0 10px 35px rgba(0,0,0,0.3), 0 0 50px rgba(255,107,107,1);
+            }
+        }
+
+        .btn-forever {
+            background: linear-gradient(135deg, #feca57, #ff9ff3);
+            color: white;
+        }
+
+        .proposal-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateY(-5px) translateX(0) scale(1.05); }
+            25% { transform: translateY(-5px) translateX(-10px) scale(1.05) rotate(-5deg); }
+            75% { transform: translateY(-5px) translateX(10px) scale(1.05) rotate(5deg); }
+        }
+
+        /* Confetti animation */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff0000;
+            animation: confettiFall 3s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti:nth-child(2n) { background: #ff4444; animation-delay: 0.2s; }
+        .confetti:nth-child(3n) { background: #ff6b6b; animation-delay: 0.4s; }
+        .confetti:nth-child(4n) { background: #ffb3ba; animation-delay: 0.6s; }
+        .confetti:nth-child(5n) { background: #fff; animation-delay: 0.8s; }
+
+        /* Celebration Overlay */
+        .celebration-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .celebration-overlay.active {
+            display: flex;
+        }
+
+        .celebration-message {
+            text-align: center;
+            padding: 60px 40px;
+            max-width: 800px;
+        }
+
+        .celebration-message h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: var(--deep-rose);
+            margin-bottom: 30px;
+        }
+
+        .celebration-message p {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .slideshow-container {
+                width: 90vw;
+                height: 90vw;
+                max-width: 400px;
+                max-height: 400px;
+            }
+
+            .hero-content {
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .love-letter {
+                padding: 40px 30px;
+            }
+
+            .proposal-btn {
+                min-width: 260px;
+                padding: 18px 50px;
+            }
+
+            .music-control {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .bouncing-heart,
+            .rotating-ring,
+            .floating-love {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .slideshow-container {
+                width: 400px;
+                height: 400px;
+            }
+
+            .hero-container {
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <!-- Image Slideshow - Left Side -->
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="assets/H1.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H2.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H3.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H4.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H5.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H6.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H7.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H8.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H9.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H10.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H11.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H12.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H13.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H14.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H15.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H16.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H17.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H18.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide">
+                    <img src="assets/H19.jpeg" alt="Our Memory">
+                    <div class="slide-overlay"></div>
+                </div>
+            </div>
+
+            <!-- Text Content - Right Side -->
+            <div class="hero-content">
+                <h1>Our Love Story</h1>
+                <p class="hero-quote">"From the day I met you… my forever began."</p>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section timeline-section" id="timeline">
+        <h2 class="section-title">Our Journey Together</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">The Beginning</div>
+                    <h3 class="timeline-title">First Meeting</h3>
+                    <p class="timeline-description">
+                        The moment our eyes met, I knew you were different. That smile, that laugh... it was like the universe conspired to bring us together.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">A Spark Ignites</div>
+                    <h3 class="timeline-title">First Conversation</h3>
+                    <p class="timeline-description">
+                        Hours felt like minutes. We talked about everything and nothing, and I realized I never wanted these conversations to end.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Magic Unfolds</div>
+                    <h3 class="timeline-title">First Date</h3>
+                    <p class="timeline-description">
+                        Nervous excitement, butterflies, and that perfect moment when I held your hand for the first time. I knew then that this was just the beginning of something beautiful.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Growing Together</div>
+                    <h3 class="timeline-title">Special Memories</h3>
+                    <p class="timeline-description">
+                        Every adventure, every quiet moment, every laugh and tear shared. Each memory with you became a treasure I hold close to my heart.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">This Moment</div>
+                    <h3 class="timeline-title">Today</h3>
+                    <p class="timeline-description">
+                        Standing here, looking back at our journey, I'm more certain than ever. You are my today and all of my tomorrows.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery-section" id="gallery">
+        <h2 class="section-title">Our Beautiful Moments</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="assets/G1.jpeg" alt="Our Memory 1">
+                <div class="gallery-caption">Where it all began</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/G2.jpeg" alt="Our Memory 2">
+                <div class="gallery-caption">Making memories together</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/G3.jpeg" alt="Our Memory 3">
+                <div class="gallery-caption">Perfect moments</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/G4.jpeg" alt="Our Memory 4">
+                <div class="gallery-caption">You make me smile</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/G5.jpeg" alt="Our Memory 5">
+                <div class="gallery-caption">Just us</div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/G6.jpg" alt="Our Memory 6">
+                <div class="gallery-caption">Forever starts now</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Letter Section -->
+    <section class="section letter-section" id="letter">
+        <h2 class="section-title">A Letter to You</h2>
+        <div class="love-letter">
+            <div class="letter-header">My Dearest Love,</div>
+            <div class="letter-content">
+                <p>
+                    If I could give you one thing in life, I would give you the ability to see yourself through my eyes. Only then would you realize how incredibly special you are to me.
+                </p>
+                <p>
+                    You walked into my life and changed everything. Your smile became my sunrise, your laughter my favorite melody, and your presence my greatest comfort. With you, I've discovered a kind of love I never knew existed.
+                </p>
+                <p>
+                    Every moment with you is a treasure. You've shown me what it means to truly love and be loved. You've been my partner in adventure, my comfort in tough times, and my reason to believe in beautiful tomorrows.
+                </p>
+                <p>
+                    I promise to stand by you through every season of life, to support your dreams as if they were my own, to laugh with you in joy and hold you in sorrow. I promise to choose you, every single day, for the rest of my life.
+                </p>
+            </div>
+            <div class="letter-signature">Forever Yours ❤️</div>
+        </div>
+    </section>
+
+    <!-- Proposal Section -->
+    <section class="section proposal-section" id="proposal">
+        <!-- Fun Animated Elements -->
+        <div class="bouncing-heart" style="left: 10%; top: 20%;">💕</div>
+        <div class="bouncing-heart" style="right: 10%; top: 30%; animation-delay: 0.5s;">❤️</div>
+        <div class="bouncing-heart" style="left: 15%; bottom: 25%; animation-delay: 1s;">💖</div>
+        <div class="bouncing-heart" style="right: 15%; bottom: 35%; animation-delay: 1.5s;">💗</div>
+        
+        <div class="rotating-ring" style="left: 20%; top: 40%;">💍</div>
+        <div class="rotating-ring" style="right: 20%; top: 50%; animation-delay: 2s;">💍</div>
+        
+        <div class="floating-love" style="left: 30%; top: 25%;">LOVE</div>
+        <div class="floating-love" style="right: 30%; top: 35%; animation-delay: 1s;">LOVE</div>
+        <div class="floating-love" style="left: 25%; bottom: 30%; animation-delay: 2s;">LOVE</div>
+        <div class="floating-love" style="right: 25%; bottom: 40%; animation-delay: 3s;">LOVE</div>
+
+        <div class="proposal-content">
+            <p class="proposal-lead">So... after all these adventures, laundry piles, and stolen food...</p>
+            <h2 class="proposal-question">Will you keep being my Valentine forever? 💍❤️</h2>
+            <p class="proposal-subtext" style="font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2.5vw, 1.3rem); color: white; margin-bottom: 40px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); font-style: italic;">
+                (I promise more date nights and fewer bad jokes... maybe)
+            </p>
+            <div class="proposal-buttons">
+                <button class="proposal-btn btn-yes" onclick="celebrate()">Obviously YES! ❤️</button>
+                <button class="proposal-btn btn-forever" onclick="celebrate()">Forever & Always 💖</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebration Overlay -->
+    <div class="celebration-overlay" id="celebrationOverlay">
+        <div class="celebration-message">
+            <h2>I knew you'd say yes! 💕</h2>
+            <p>You're stuck with me forever, shonyaaa! Here's to more adventures, more laughter, more stolen food, and a lifetime of loving you! 🥰✨</p>
+            <p style="margin-top: 20px; font-style: italic; font-size: 1.2rem;">P.S. - I'm still not sharing my food though 😘</p>
+        </div>
+    </div>
+
+    <!-- Music Control -->
+    <div class="music-control" id="musicControl" onclick="toggleMusic()">
+        🔇
+    </div>
+
+    <!-- Audio -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_4a1f964070.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Slideshow functionality
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlides() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].classList.add('active');
+            setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
+
+        // Start slideshow
+        showSlides();
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.section-title, .timeline-item, .gallery-item, .love-letter, .proposal-content').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const hearts = ['💕', '❤️', '💖', '💗', '💝', '✨'];
+            particle.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            
+            document.getElementById('hero').appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 10000);
+        }
+
+        // Generate particles
+        setInterval(createParticle, 1500);
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createParticle, i * 300);
+        }
+
+        // Music functionality
+        let musicPlaying = false;
+
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const control = document.getElementById('musicControl');
+            
+            if (musicPlaying) {
+                music.pause();
+                control.innerHTML = '🔇';
+                musicPlaying = false;
+            } else {
+                music.play().catch(e => console.log('Audio play failed'));
+                control.innerHTML = '🔊';
+                musicPlaying = true;
+            }
+        }
+
+        // Auto-play music on first interaction
+        document.body.addEventListener('click', function initMusic() {
+            const music = document.getElementById('bgMusic');
+            const control = document.getElementById('musicControl');
+            music.volume = 0.3;
+            music.play().then(() => {
+                musicPlaying = true;
+                control.innerHTML = '🔊';
+            }).catch(e => console.log('Audio autoplay prevented'));
+            document.body.removeEventListener('click', initMusic);
+        }, { once: true });
+
+        // Celebration function
+        function celebrate() {
+            const overlay = document.getElementById('celebrationOverlay');
+            overlay.classList.add('active');
+            
+            // Create heart explosion
+            const hero = document.getElementById('hero');
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'particle';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.position = 'fixed';
+                    heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 4000);
+                }, i * 20);
+            }
+
+            // Create confetti explosion
+            const proposalSection = document.getElementById('proposal');
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    confetti.style.animationDelay = Math.random() + 's';
+                    proposalSection.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 50);
+            }
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
