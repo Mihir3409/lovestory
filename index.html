@@ -34,6 +34,247 @@
             background: var(--cream);
         }
 
+        /* Lock Screen Styles */
+        .lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #cc0000 0%, #ff4444 50%, #ff6b6b 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 20s ease infinite;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .lock-screen.unlocked {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .lock-container {
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+        }
+
+        .lock-icon {
+            font-size: 120px;
+            margin-bottom: 30px;
+            animation: lockShake 0.5s ease-in-out;
+            display: inline-block;
+        }
+
+        @keyframes lockShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-15deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        .lock-icon.unlocking {
+            animation: unlockAnimation 1s ease forwards;
+        }
+
+        @keyframes unlockAnimation {
+            0% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.5) rotate(360deg);
+                opacity: 0.5;
+            }
+            100% { 
+                transform: scale(2) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .lock-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s ease;
+        }
+
+        .lock-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            color: white;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .lock-input-container {
+            position: relative;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .lock-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px 25px;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            border: 3px solid white;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .lock-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .lock-input:focus {
+            outline: none;
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 0 30px rgba(255,255,255,0.5);
+            transform: scale(1.05);
+        }
+
+        .lock-input.shake {
+            animation: shakeInput 0.5s ease;
+        }
+
+        @keyframes shakeInput {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .unlock-btn {
+            padding: 18px 60px;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            background: white;
+            color: var(--deep-rose);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease 0.9s both, pulse 2s ease-in-out 2s infinite;
+        }
+
+        .unlock-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .unlock-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .lock-hint {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            margin-top: 20px;
+            font-style: italic;
+            animation: fadeIn 1s ease 1.2s both;
+        }
+
+        .error-message {
+            color: #ffeb3b;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            margin-top: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        /* Floating hearts on lock screen */
+        .lock-heart {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatHeart 6s ease-in-out infinite;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Success animation */
+        .success-burst {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        @keyframes burstOut {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -152,17 +393,6 @@
         @keyframes bounce {
             0%, 100% { transform: translate(-50%, 0); }
             50% { transform: translate(-50%, 15px); }
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
         }
 
         /* Floating particles */
@@ -550,11 +780,6 @@
             animation: fadeIn 1s forwards 1s;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
         .proposal-buttons {
             display: flex;
             flex-direction: column;
@@ -697,6 +922,25 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
+            .lock-input {
+                max-width: 90%;
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+
+            .unlock-btn {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+
+            .lock-title {
+                font-size: 2.5rem;
+            }
+
+            .lock-subtitle {
+                font-size: 1.1rem;
+            }
+
             .hero {
                 padding: 60px 20px;
             }
@@ -768,6 +1012,35 @@
     </style>
 </head>
 <body>
+    <!-- Lock Screen -->
+    <div class="lock-screen" id="lockScreen">
+        <div class="lock-container">
+            <div class="lock-icon" id="lockIcon">🔒</div>
+            <h1 class="lock-title">A Special Message Awaits</h1>
+            <p class="lock-subtitle">Enter the magic word to unlock our story</p>
+            <div class="lock-input-container">
+                <input 
+                    type="text" 
+                    class="lock-input" 
+                    id="lockInput" 
+                    placeholder="Hint: It's what I feel for you ❤️"
+                    autocomplete="off"
+                >
+            </div>
+            <button class="unlock-btn" onclick="checkPassword()">Unlock ✨</button>
+            <p class="error-message" id="errorMessage">Hmm, that's not quite right! Try again 💕</p>
+            <p class="lock-hint">💡 Psst... it's a 4-letter word that makes the world go round</p>
+        </div>
+        
+        <!-- Floating hearts -->
+        <div class="lock-heart" style="left: 10%; animation-delay: 0s;">💕</div>
+        <div class="lock-heart" style="left: 25%; animation-delay: 1.5s;">❤️</div>
+        <div class="lock-heart" style="left: 40%; animation-delay: 3s;">💖</div>
+        <div class="lock-heart" style="left: 60%; animation-delay: 2s;">💗</div>
+        <div class="lock-heart" style="left: 75%; animation-delay: 4s;">💝</div>
+        <div class="lock-heart" style="right: 10%; animation-delay: 2.5s;">✨</div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-container">
@@ -993,10 +1266,10 @@
         <div class="floating-love" style="right: 25%; bottom: 40%; animation-delay: 3s;">LOVE</div>
 
         <div class="proposal-content">
-            <p class="proposal-lead">So... after all these adventures, laundry piles, and stolen food...</p>
-            <h2 class="proposal-question">Will you keep being my Valentine forever? 💍❤️</h2>
+            <p class="proposal-lead">So... after all these adventures, laundry piles, and stolen fries...</p>
+            <h2 class="proposal-question">Will you keep being my wife? 💍❤️</h2>
             <p class="proposal-subtext" style="font-family: 'Playfair Display', serif; font-size: clamp(1rem, 2.5vw, 1.3rem); color: white; margin-bottom: 40px; text-shadow: 2px 2px 8px rgba(0,0,0,0.8); font-style: italic;">
-                (I promise more date nights and fewer bad jokes... maybe)
+                (I promise more date nights and fewer dad jokes... maybe)
             </p>
             <div class="proposal-buttons">
                 <button class="proposal-btn btn-yes" onclick="celebrate()">Obviously YES! ❤️</button>
@@ -1009,8 +1282,8 @@
     <div class="celebration-overlay" id="celebrationOverlay">
         <div class="celebration-message">
             <h2>I knew you'd say yes! 💕</h2>
-            <p>You're stuck with me forever, shonyaaa! Here's to more adventures, more laughter, more stolen food, and a lifetime of loving you! 🥰✨</p>
-            <p style="margin-top: 20px; font-style: italic; font-size: 1.2rem;">P.S. - I'm still not sharing my food though 😘</p>
+            <p>You're stuck with me forever, babe! Here's to more adventures, more laughter, more stolen hoodies, and a lifetime of loving you! 🥰✨</p>
+            <p style="margin-top: 20px; font-style: italic; font-size: 1.2rem;">P.S. - I'm still not sharing my fries though 😘</p>
         </div>
     </div>
 
@@ -1021,10 +1294,95 @@
 
     <!-- Audio -->
     <audio id="bgMusic" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_4a1f964070.mp3" type="audio/mpeg">
+        <source src="assets/music.mp3" type="audio/mpeg">
     </audio>
 
     <script>
+        // Lock Screen Password Check
+        const correctPasswords = ['love', 'LOVE', 'Love'];
+        
+        function checkPassword() {
+            const input = document.getElementById('lockInput');
+            const errorMsg = document.getElementById('errorMessage');
+            const lockIcon = document.getElementById('lockIcon');
+            const lockScreen = document.getElementById('lockScreen');
+            
+            if (correctPasswords.includes(input.value.trim())) {
+                // Success! Unlock animation
+                lockIcon.innerHTML = '🔓';
+                lockIcon.classList.add('unlocking');
+                
+                // Create success burst effect
+                createSuccessBurst();
+                
+                // Hide lock screen after animation
+                setTimeout(() => {
+                    lockScreen.classList.add('unlocked');
+                    // Start the main page animations
+                    setTimeout(() => {
+                        document.body.style.overflow = 'auto';
+                    }, 800);
+                }, 1000);
+            } else {
+                // Wrong password - shake animation
+                input.classList.add('shake');
+                errorMsg.classList.add('show');
+                lockIcon.classList.add('lockShake');
+                
+                setTimeout(() => {
+                    input.classList.remove('shake');
+                    lockIcon.classList.remove('lockShake');
+                }, 500);
+                
+                setTimeout(() => {
+                    errorMsg.classList.remove('show');
+                }, 3000);
+            }
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById('lockInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        // Success burst effect
+        function createSuccessBurst() {
+            const lockContainer = document.querySelector('.lock-container');
+            const rect = lockContainer.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            for (let i = 0; i < 30; i++) {
+                const burst = document.createElement('div');
+                burst.className = 'success-burst';
+                burst.style.position = 'fixed';
+                burst.style.left = centerX + 'px';
+                burst.style.top = centerY + 'px';
+                
+                const angle = (i / 30) * Math.PI * 2;
+                const distance = 100 + Math.random() * 100;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                burst.style.setProperty('--tx', tx + 'px');
+                burst.style.setProperty('--ty', ty + 'px');
+                burst.style.animation = 'burstOut 1s ease-out forwards';
+                
+                // Random colors
+                const colors = ['#ff0000', '#ff4444', '#ff6b6b', '#ffb3ba', '#fff'];
+                burst.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                document.body.appendChild(burst);
+                
+                setTimeout(() => burst.remove(), 1000);
+            }
+        }
+        
+        // Prevent scrolling initially
+        document.body.style.overflow = 'hidden';
+
         // Slideshow functionality
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slide');
@@ -1036,7 +1394,7 @@
                 slideIndex = 1;
             }
             slides[slideIndex - 1].classList.add('active');
-            setTimeout(showSlides, 4000); // Change image every 4 seconds
+            setTimeout(showSlides, 4000);
         }
 
         // Start slideshow
@@ -1163,5 +1521,4 @@
         });
     </script>
 </body>
-
 </html>
